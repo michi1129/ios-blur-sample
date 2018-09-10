@@ -13,6 +13,7 @@
 		0692DFFC21469B4B0082D6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0692DFFB21469B4B0082D6D8 /* Assets.xcassets */; };
 		0692DFFF21469B4B0082D6D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0692DFFD21469B4B0082D6D8 /* LaunchScreen.storyboard */; };
 		0692E00821469D150082D6D8 /* lena.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0692E00721469D150082D6D8 /* lena.jpg */; };
+		5CB7239B29BD5091BFEC4359 /* Pods_ios_blur_sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44F0FFF217E669F4352740 /* Pods_ios_blur_sample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		0692DFFE21469B4B0082D6D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0692E00021469B4B0082D6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0692E00721469D150082D6D8 /* lena.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lena.jpg; sourceTree = "<group>"; };
+		0F6B347C9BFA656F783D9DCA /* Pods-ios-blur-sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-blur-sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-blur-sample/Pods-ios-blur-sample.debug.xcconfig"; sourceTree = "<group>"; };
+		2B44F0FFF217E669F4352740 /* Pods_ios_blur_sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_blur_sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AF0CCE47E35154820DE816 /* Pods-ios-blur-sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-blur-sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-blur-sample/Pods-ios-blur-sample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB7239B29BD5091BFEC4359 /* Pods_ios_blur_sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				0692DFF321469B4A0082D6D8 /* ios-blur-sample */,
 				0692DFF221469B4A0082D6D8 /* Products */,
+				E05F339984F993B9E3977F00 /* Pods */,
+				27BDCB1963DCF07BB8324B1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +82,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		27BDCB1963DCF07BB8324B1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B44F0FFF217E669F4352740 /* Pods_ios_blur_sample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E05F339984F993B9E3977F00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F6B347C9BFA656F783D9DCA /* Pods-ios-blur-sample.debug.xcconfig */,
+				D1AF0CCE47E35154820DE816 /* Pods-ios-blur-sample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0692E00321469B4B0082D6D8 /* Build configuration list for PBXNativeTarget "ios-blur-sample" */;
 			buildPhases = (
+				F8E2E77C201465FA40E2D524 /* [CP] Check Pods Manifest.lock */,
 				0692DFED21469B4A0082D6D8 /* Sources */,
 				0692DFEE21469B4A0082D6D8 /* Frameworks */,
 				0692DFEF21469B4A0082D6D8 /* Resources */,
+				0E4CCFD3D330AD5C67738C3A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +167,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E4CCFD3D330AD5C67738C3A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ios-blur-sample/Pods-ios-blur-sample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-blur-sample/Pods-ios-blur-sample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8E2E77C201465FA40E2D524 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios-blur-sample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0692DFED21469B4A0082D6D8 /* Sources */ = {
@@ -290,6 +355,7 @@
 		};
 		0692E00421469B4B0082D6D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F6B347C9BFA656F783D9DCA /* Pods-ios-blur-sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,6 +373,7 @@
 		};
 		0692E00521469B4B0082D6D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1AF0CCE47E35154820DE816 /* Pods-ios-blur-sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
