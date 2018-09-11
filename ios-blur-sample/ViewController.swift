@@ -7,42 +7,96 @@
 //
 
 import UIKit
-
 import GPUImage
 
-class ViewController: UIViewController {
-    @IBOutlet weak var image1: UIImageView!
-    @IBOutlet weak var image2: UIImageView!
-    @IBOutlet weak var image3: UIImageView!
-    
+typealias Pair = (String, UIImage)
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+
+    var ary: [Pair] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        useGPUImage()
-        useCIFilter()
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+
+        // normal
+        ary.append(("normal", lenaImage))
+
+        // gpuimage
+        ary.append(("gpuimage", useGPUImage()))
+
+        // cifilter
+        if let img = useCIFilter_BoxBlur() {
+            ary.append(("cifilter, box blur", img))
+        }
+        if let img = useCIFilter_DiscBlur() {
+            ary.append(("cifilter, disc blur", img))
+        }
+        if let img = useCIFilter_GaussianBlur() {
+            ary.append(("cifilter, gaussian blur", img))
+        }
     }
 
-    func lena() -> UIImage {
-        let img = UIImage(named: "lena.jpg")!
-        return img
-    }
-    
-    func useGPUImage() {
+    let lenaImage = UIImage(named: "lena")!
+
+    func useGPUImage() -> UIImage {
         let blur = GPUImageiOSBlurFilter()
         blur.blurRadiusInPixels = 0.5
-        image2.image = blur.image(byFilteringImage: lena())
+        return blur.image(byFilteringImage: lenaImage)
     }
-    
-    func useCIFilter() {
-        let old = CIImage(cgImage: lena().cgImage!)
-        guard let blur = CIFilter(name: "CIGaussianBlur") else {
-            print("cannot create filter")
-            return
+
+    func useCIFilter_BoxBlur() -> UIImage? {
+        if let filter = CIFilter(name: "CIBoxBlur"), let cgimg = lenaImage.cgImage {
+            filter.setDefaults()
+            filter.setValue(CIImage(cgImage: cgimg), forKey: kCIInputImageKey)
+            if let outimg = filter.outputImage {
+                return UIImage(ciImage: outimg)
+            }
         }
-        blur.setDefaults()
-        blur.setValue(4.0, forKey: kCIInputRadiusKey)
-        blur.setValue(old, forKey: kCIInputImageKey)
-        image3.image = UIImage(ciImage: blur.outputImage!)
+        return nil
+    }
+    func useCIFilter_DiscBlur() -> UIImage? {
+        if let filter = CIFilter(name: "CIDiscBlur"), let cgimg = lenaImage.cgImage {
+            filter.setDefaults()
+            filter.setValue(CIImage(cgImage: cgimg), forKey: kCIInputImageKey)
+            if let outimg = filter.outputImage {
+                return UIImage(ciImage: outimg)
+            }
+        }
+        return nil
+    }
+    func useCIFilter_GaussianBlur() -> UIImage? {
+        if let filter = CIFilter(name: "CIGaussianBlur"), let cgimg = lenaImage.cgImage {
+            filter.setDefaults()
+            filter.setValue(CIImage(cgImage: cgimg), forKey: kCIInputImageKey)
+            if let outimg = filter.outputImage {
+                return UIImage(ciImage: outimg)
+            }
+        }
+        return nil
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ary.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
+        let pair = ary[indexPath.row]
+        cell.textLabel?.text = pair.0
+        cell.imageView?.image = pair.1
+
+        return cell
     }
 }
-
