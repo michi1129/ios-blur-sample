@@ -12,7 +12,6 @@
 		0692DFFA21469B4A0082D6D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0692DFF821469B4A0082D6D8 /* Main.storyboard */; };
 		0692DFFC21469B4B0082D6D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0692DFFB21469B4B0082D6D8 /* Assets.xcassets */; };
 		0692DFFF21469B4B0082D6D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0692DFFD21469B4B0082D6D8 /* LaunchScreen.storyboard */; };
-		0692E00821469D150082D6D8 /* lena.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0692E00721469D150082D6D8 /* lena.jpg */; };
 		5CB7239B29BD5091BFEC4359 /* Pods_ios_blur_sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44F0FFF217E669F4352740 /* Pods_ios_blur_sample.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		0692DFFB21469B4B0082D6D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0692DFFE21469B4B0082D6D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0692E00021469B4B0082D6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0692E00721469D150082D6D8 /* lena.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lena.jpg; sourceTree = "<group>"; };
 		0F6B347C9BFA656F783D9DCA /* Pods-ios-blur-sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-blur-sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-blur-sample/Pods-ios-blur-sample.debug.xcconfig"; sourceTree = "<group>"; };
 		2B44F0FFF217E669F4352740 /* Pods_ios_blur_sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_blur_sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AF0CCE47E35154820DE816 /* Pods-ios-blur-sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-blur-sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-blur-sample/Pods-ios-blur-sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 		0692DFF321469B4A0082D6D8 /* ios-blur-sample */ = {
 			isa = PBXGroup;
 			children = (
-				0692E00621469CFB0082D6D8 /* Resources */,
 				0692DFF421469B4A0082D6D8 /* AppDelegate.swift */,
 				0692DFF621469B4A0082D6D8 /* ViewController.swift */,
 				0692DFF821469B4A0082D6D8 /* Main.storyboard */,
@@ -72,14 +69,6 @@
 				0692E00021469B4B0082D6D8 /* Info.plist */,
 			);
 			path = "ios-blur-sample";
-			sourceTree = "<group>";
-		};
-		0692E00621469CFB0082D6D8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0692E00721469D150082D6D8 /* lena.jpg */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		27BDCB1963DCF07BB8324B1C /* Frameworks */ = {
@@ -106,6 +95,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0692E00321469B4B0082D6D8 /* Build configuration list for PBXNativeTarget "ios-blur-sample" */;
 			buildPhases = (
+				066526B9214803B400037F74 /* ShellScript */,
 				F8E2E77C201465FA40E2D524 /* [CP] Check Pods Manifest.lock */,
 				0692DFED21469B4A0082D6D8 /* Sources */,
 				0692DFEE21469B4A0082D6D8 /* Frameworks */,
@@ -162,7 +152,6 @@
 				0692DFFF21469B4B0082D6D8 /* LaunchScreen.storyboard in Resources */,
 				0692DFFC21469B4B0082D6D8 /* Assets.xcassets in Resources */,
 				0692DFFA21469B4A0082D6D8 /* Main.storyboard in Resources */,
-				0692E00821469D150082D6D8 /* lena.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
