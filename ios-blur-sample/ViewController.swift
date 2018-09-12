@@ -16,66 +16,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     var ary: [Pair] = []
 
+    let sourceImage = UIImage(named: "lena")!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
 
-        // normal
-        ary.append(("normal", lenaImage))
+        execute()
+    }
 
-        // gpuimage
-        ary.append(("gpuimage", useGPUImage()))
+    func execute() {
+        ary.append(("normal", sourceImage))
+        ary.append(("gpuimage", GPUImageWrapper.apply(sourceImage)))
 
-        // cifilter
-        if let img = useCIFilter_BoxBlur() {
+        if let img = CIFilterWrapper.applyBoxBlur(sourceImage) {
             ary.append(("cifilter, box blur", img))
         }
-        if let img = useCIFilter_DiscBlur() {
+        if let img = CIFilterWrapper.applyDiscBlur(sourceImage) {
             ary.append(("cifilter, disc blur", img))
         }
-        if let img = useCIFilter_GaussianBlur() {
+        if let img = CIFilterWrapper.applyGaussianBlur(sourceImage) {
             ary.append(("cifilter, gaussian blur", img))
         }
-    }
-
-    let lenaImage = UIImage(named: "lena")!
-
-    func useGPUImage() -> UIImage {
-        let blur = GPUImageiOSBlurFilter()
-        blur.blurRadiusInPixels = 0.5
-        return blur.image(byFilteringImage: lenaImage)
-    }
-
-    func useCIFilter_BoxBlur() -> UIImage? {
-        if let filter = CIFilter(name: "CIBoxBlur"), let cgimg = lenaImage.cgImage {
-            filter.setDefaults()
-            filter.setValue(CIImage(cgImage: cgimg), forKey: kCIInputImageKey)
-            if let outimg = filter.outputImage {
-                return UIImage(ciImage: outimg)
-            }
-        }
-        return nil
-    }
-    func useCIFilter_DiscBlur() -> UIImage? {
-        if let filter = CIFilter(name: "CIDiscBlur"), let cgimg = lenaImage.cgImage {
-            filter.setDefaults()
-            filter.setValue(CIImage(cgImage: cgimg), forKey: kCIInputImageKey)
-            if let outimg = filter.outputImage {
-                return UIImage(ciImage: outimg)
-            }
-        }
-        return nil
-    }
-    func useCIFilter_GaussianBlur() -> UIImage? {
-        if let filter = CIFilter(name: "CIGaussianBlur"), let cgimg = lenaImage.cgImage {
-            filter.setDefaults()
-            filter.setValue(CIImage(cgImage: cgimg), forKey: kCIInputImageKey)
-            if let outimg = filter.outputImage {
-                return UIImage(ciImage: outimg)
-            }
-        }
-        return nil
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
